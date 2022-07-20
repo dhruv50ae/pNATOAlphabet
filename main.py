@@ -1,9 +1,9 @@
-import random
-names = ["Alpha", "Bravo", "Charlie", "Delta", "Echo"]
+import pandas
 
-scores = {name: random.randint(1, 100) for name in names}
+data = pandas.read_csv("npa.csv")
+phoneticDict = {row.letter: row.code for (index, row) in data.iterrows()}
+# print(phoneticDict)
+name = input("Enter a name: \n").upper()
+outputList = [phoneticDict[letter] for letter in name]
 
-passed = {name: score for (name, score) in scores.items() if score >= 60}
-print(scores)
-
-print(passed)
+print(outputList)
